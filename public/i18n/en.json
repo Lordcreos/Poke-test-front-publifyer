@@ -235,5 +235,113 @@
       "REMOVE_SUCCESS": "Pokémon removed from Pokedex",
       "REMOVE_ERROR": "Error removing Pokémon from Pokedex"
     }
+  },
+
+  "landing": {
+    "brand": "PokéDex Pro",
+    "nav": {
+      "features": "Features",
+      "testimonials": "Testimonials", 
+      "pricing": "Pricing",
+      "login": "Sign In",
+      "getStarted": "Get Started"
+    },
+    "hero": {
+      "badge": "The Ultimate Pokémon Management Platform",
+      "title": "Master Your Pokémon Journey",
+      "subtitle": "Discover, track, and manage your Pokémon collection like never before with our professional-grade platform trusted by trainers worldwide.",
+      "cta": {
+        "primary": "Start Your Journey",
+        "secondary": "Watch Demo"
+      },
+      "stats": {
+        "pokemon": "Pokémon",
+        "trainers": "Active Trainers",
+        "uptime": "Uptime"
+      }
+    },
+    "features": {
+      "title": "Everything You Need to Excel",
+      "subtitle": "Powerful tools designed to enhance your Pokémon training experience",
+      "search": {
+        "title": "Advanced Search",
+        "description": "Find any Pokémon instantly with our powerful search and filtering system."
+      },
+      "teams": {
+        "title": "Team Management",
+        "description": "Build, organize, and optimize your perfect Pokémon teams with ease."
+      },
+      "analytics": {
+        "title": "Performance Analytics",
+        "description": "Track your progress and analyze your team's performance with detailed insights."
+      },
+      "responsive": {
+        "title": "Mobile Ready",
+        "description": "Access your Pokédex anywhere, anytime with our responsive mobile design."
+      }
+    },
+    "testimonials": {
+      "title": "Loved by Trainers Worldwide",
+      "subtitle": "See what professional trainers are saying about our platform",
+      "ash": {
+        "content": "This platform revolutionized how I manage my Pokémon teams. The analytics helped me become a better trainer!"
+      },
+      "misty": {
+        "content": "As a Gym Leader, I need reliable tools. This platform delivers everything I need and more."
+      },
+      "brock": {
+        "content": "The team management features are incredible. I can track all my Pokémon's growth and potential effortlessly."
+      }
+    },
+    "pricing": {
+      "title": "Choose Your Plan",
+      "subtitle": "Start free and upgrade as you grow your collection",
+      "free": {
+        "title": "Trainer",
+        "price": "Free",
+        "period": "Forever",
+        "feature1": "Up to 6 Pokémon",
+        "feature2": "Basic search",
+        "feature3": "1 team slot",
+        "cta": "Start Free"
+      },
+      "pro": {
+        "title": "Master Trainer",
+        "price": "$9.99",
+        "period": "per month",
+        "badge": "Most Popular",
+        "feature1": "Unlimited Pokémon",
+        "feature2": "Advanced analytics",
+        "feature3": "Unlimited teams",
+        "feature4": "Priority support",
+        "cta": "Go Pro"
+      },
+      "enterprise": {
+        "title": "Gym Leader",
+        "price": "Custom",
+        "period": "Contact us",
+        "feature1": "Everything in Pro",
+        "feature2": "Custom integrations",
+        "feature3": "Dedicated support",
+        "feature4": "Team collaboration",
+        "cta": "Contact Sales"
+      }
+    },
+    "cta": {
+      "title": "Ready to Become a Pokémon Master?",
+      "subtitle": "Join thousands of trainers who are already using our platform to excel in their journey.",
+      "primary": "Start Free Today",
+      "secondary": "Sign In"
+    },
+    "footer": {
+      "description": "The most advanced Pokémon management platform for serious trainers who want to excel.",
+      "quickLinks": "Quick Links",
+      "support": "Support",
+      "help": "Help Center",
+      "contact": "Contact Us",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "rights": "All rights reserved."
+    }
   }
 }

@@ -235,5 +235,113 @@
       "REMOVE_SUCCESS": "Pokémon eliminado de la Pokédex",
       "REMOVE_ERROR": "Error al eliminar el Pokémon de la Pokédex"
     }
+  },
+
+  "landing": {
+    "brand": "PokéDex Pro",
+    "nav": {
+      "features": "Características",
+      "testimonials": "Testimonios", 
+      "pricing": "Precios",
+      "login": "Iniciar Sesión",
+      "getStarted": "Comenzar"
+    },
+    "hero": {
+      "badge": "La Plataforma Definitiva de Gestión Pokémon",
+      "title": "Domina tu Aventura Pokémon",
+      "subtitle": "Descubre, rastrea y gestiona tu colección Pokémon como nunca antes con nuestra plataforma de nivel profesional en la que confían entrenadores de todo el mundo.",
+      "cta": {
+        "primary": "Inicia tu Aventura",
+        "secondary": "Ver Demo"
+      },
+      "stats": {
+        "pokemon": "Pokémon",
+        "trainers": "Entrenadores Activos",
+        "uptime": "Tiempo Activo"
+      }
+    },
+    "features": {
+      "title": "Todo lo que Necesitas para Sobresalir",
+      "subtitle": "Herramientas poderosas diseñadas para mejorar tu experiencia de entrenamiento Pokémon",
+      "search": {
+        "title": "Búsqueda Avanzada",
+        "description": "Encuentra cualquier Pokémon al instante con nuestro potente sistema de búsqueda y filtros."
+      },
+      "teams": {
+        "title": "Gestión de Equipos",
+        "description": "Construye, organiza y optimiza tus equipos Pokémon perfectos con facilidad."
+      },
+      "analytics": {
+        "title": "Analíticas de Rendimiento",
+        "description": "Rastrea tu progreso y analiza el rendimiento de tu equipo con insights detallados."
+      },
+      "responsive": {
+        "title": "Listo para Móvil",
+        "description": "Accede a tu Pokédex en cualquier lugar, en cualquier momento con nuestro diseño móvil responsivo."
+      }
+    },
+    "testimonials": {
+      "title": "Amado por Entrenadores de Todo el Mundo",
+      "subtitle": "Mira lo que dicen los entrenadores profesionales sobre nuestra plataforma",
+      "ash": {
+        "content": "Esta plataforma revolucionó la forma en que gestiono mis equipos Pokémon. ¡Las analíticas me ayudaron a ser un mejor entrenador!"
+      },
+      "misty": {
+        "content": "Como Líder de Gimnasio, necesito herramientas confiables. Esta plataforma ofrece todo lo que necesito y más."
+      },
+      "brock": {
+        "content": "Las funciones de gestión de equipos son increíbles. Puedo rastrear el crecimiento y potencial de todos mis Pokémon sin esfuerzo."
+      }
+    },
+    "pricing": {
+      "title": "Elige tu Plan",
+      "subtitle": "Comienza gratis y actualiza mientras haces crecer tu colección",
+      "free": {
+        "title": "Entrenador",
+        "price": "Gratis",
+        "period": "Para Siempre",
+        "feature1": "Hasta 6 Pokémon",
+        "feature2": "Búsqueda básica",
+        "feature3": "1 slot de equipo",
+        "cta": "Comenzar Gratis"
+      },
+      "pro": {
+        "title": "Maestro Entrenador",
+        "price": "$9.99",
+        "period": "por mes",
+        "badge": "Más Popular",
+        "feature1": "Pokémon ilimitados",
+        "feature2": "Analíticas avanzadas",
+        "feature3": "Equipos ilimitados",
+        "feature4": "Soporte prioritario",
+        "cta": "Hazte Pro"
+      },
+      "enterprise": {
+        "title": "Líder de Gimnasio",
+        "price": "Personalizado",
+        "period": "Contáctanos",
+        "feature1": "Todo lo de Pro",
+        "feature2": "Integraciones personalizadas",
+        "feature3": "Soporte dedicado",
+        "feature4": "Colaboración en equipo",
+        "cta": "Contactar Ventas"
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Convertirte en un Maestro Pokémon?",
+      "subtitle": "Únete a miles de entrenadores que ya están usando nuestra plataforma para sobresalir en su aventura.",
+      "primary": "Comenzar Gratis Hoy",
+      "secondary": "Iniciar Sesión"
+    },
+    "footer": {
+      "description": "La plataforma de gestión Pokémon más avanzada para entrenadores serios que quieren sobresalir.",
+      "quickLinks": "Enlaces Rápidos",
+      "support": "Soporte",
+      "help": "Centro de Ayuda",
+      "contact": "Contáctanos",
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio",
+      "rights": "Todos los derechos reservados."
+    }
   }
 }

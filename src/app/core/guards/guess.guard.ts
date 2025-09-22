@@ -9,7 +9,13 @@ export const guessGuard: CanActivateFn = (route, state) => {
   const isLoggedIn = authService.isLoggedIn();
 
   if (!isLoggedIn) {
-    router.navigate(['auth', 'login']);
+    // Si no está logueado y está intentando acceder a la raíz, redirigir a landing
+    if (state.url === '/') {
+      router.navigate(['/landing']);
+      return false;
+    }
+    // Para otras rutas protegidas, redirigir a login
+    router.navigate(['/auth/login']);
     return false;
   }
 

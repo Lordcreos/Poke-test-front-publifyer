@@ -236,5 +236,113 @@
       "REMOVE_SUCCESS": "Pokémon removido da Pokédex",
       "REMOVE_ERROR": "Erro ao remover o Pokémon da Pokédex"
     }
+  },
+
+  "landing": {
+    "brand": "PokéDex Pro",
+    "nav": {
+      "features": "Recursos",
+      "testimonials": "Depoimentos", 
+      "pricing": "Preços",
+      "login": "Entrar",
+      "getStarted": "Começar"
+    },
+    "hero": {
+      "badge": "A Plataforma Definitiva de Gerenciamento Pokémon",
+      "title": "Domine sua Jornada Pokémon",
+      "subtitle": "Descubra, rastreie e gerencie sua coleção Pokémon como nunca antes com nossa plataforma de nível profissional confiada por treinadores em todo o mundo.",
+      "cta": {
+        "primary": "Inicie sua Jornada",
+        "secondary": "Assistir Demo"
+      },
+      "stats": {
+        "pokemon": "Pokémon",
+        "trainers": "Treinadores Ativos",
+        "uptime": "Tempo Ativo"
+      }
+    },
+    "features": {
+      "title": "Tudo que Você Precisa para Sobressair",
+      "subtitle": "Ferramentas poderosas projetadas para aprimorar sua experiência de treinamento Pokémon",
+      "search": {
+        "title": "Busca Avançada",
+        "description": "Encontre qualquer Pokémon instantaneamente com nosso poderoso sistema de busca e filtros."
+      },
+      "teams": {
+        "title": "Gerenciamento de Equipes",
+        "description": "Construa, organize e otimize suas equipes Pokémon perfeitas com facilidade."
+      },
+      "analytics": {
+        "title": "Análise de Performance",
+        "description": "Acompanhe seu progresso e analise o desempenho de sua equipe com insights detalhados."
+      },
+      "responsive": {
+        "title": "Pronto para Mobile",
+        "description": "Acesse sua Pokédex em qualquer lugar, a qualquer hora com nosso design mobile responsivo."
+      }
+    },
+    "testimonials": {
+      "title": "Amado por Treinadores do Mundo Todo",
+      "subtitle": "Veja o que treinadores profissionais estão dizendo sobre nossa plataforma",
+      "ash": {
+        "content": "Esta plataforma revolucionou como gerencio minhas equipes Pokémon. As análises me ajudaram a me tornar um treinador melhor!"
+      },
+      "misty": {
+        "content": "Como Líder de Ginásio, preciso de ferramentas confiáveis. Esta plataforma oferece tudo que preciso e mais."
+      },
+      "brock": {
+        "content": "Os recursos de gerenciamento de equipes são incríveis. Posso acompanhar o crescimento e potencial de todos os meus Pokémon sem esforço."
+      }
+    },
+    "pricing": {
+      "title": "Escolha seu Plano",
+      "subtitle": "Comece grátis e atualize conforme cresce sua coleção",
+      "free": {
+        "title": "Treinador",
+        "price": "Grátis",
+        "period": "Para Sempre",
+        "feature1": "Até 6 Pokémon",
+        "feature2": "Busca básica",
+        "feature3": "1 slot de equipe",
+        "cta": "Começar Grátis"
+      },
+      "pro": {
+        "title": "Mestre Treinador",
+        "price": "$9.99",
+        "period": "por mês",
+        "badge": "Mais Popular",
+        "feature1": "Pokémon ilimitados",
+        "feature2": "Análises avançadas",
+        "feature3": "Equipes ilimitadas",
+        "feature4": "Suporte prioritário",
+        "cta": "Seja Pro"
+      },
+      "enterprise": {
+        "title": "Líder de Ginásio",
+        "price": "Personalizado",
+        "period": "Entre em contato",
+        "feature1": "Tudo do Pro",
+        "feature2": "Integrações personalizadas",
+        "feature3": "Suporte dedicado",
+        "feature4": "Colaboração em equipe",
+        "cta": "Contatar Vendas"
+      }
+    },
+    "cta": {
+      "title": "Pronto para se Tornar um Mestre Pokémon?",
+      "subtitle": "Junte-se a milhares de treinadores que já estão usando nossa plataforma para sobressair em sua jornada.",
+      "primary": "Começar Grátis Hoje",
+      "secondary": "Entrar"
+    },
+    "footer": {
+      "description": "A plataforma de gerenciamento Pokémon mais avançada para treinadores sérios que querem sobressair.",
+      "quickLinks": "Links Rápidos",
+      "support": "Suporte",
+      "help": "Central de Ajuda",
+      "contact": "Entre em Contato",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço",
+      "rights": "Todos os direitos reservados."
+    }
   }
 }

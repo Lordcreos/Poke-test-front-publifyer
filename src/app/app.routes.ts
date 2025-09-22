@@ -5,6 +5,7 @@ import { mainRoutes } from './feature/main/main.routes';
 
 const loadAuthLayout = () => import('@feature/auth/layout/auth-layout.component');
 const loadMainLayout = () => import('@feature/main/layout/main-layout.component');
+const loadLandingPage = () => import('@feature/landing/pages/landing-page/landing-page.component');
 
 export const routes: Routes = [
   {
@@ -12,6 +13,11 @@ export const routes: Routes = [
     loadComponent: loadAuthLayout,
     canActivate: [authGuard],
     children: authRoutes,
+  },
+  {
+    path: 'landing',
+    loadComponent: loadLandingPage,
+    // Sin guard - accesible para todos
   },
   {
     path: '',
