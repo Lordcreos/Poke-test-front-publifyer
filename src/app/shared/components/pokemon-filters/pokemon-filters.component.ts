@@ -6,6 +6,7 @@ import {
   signal,
   computed,
   input,
+  effect,
 } from '@angular/core';
 import { PokemonFilters, ActiveFilter, FilterOption } from '@core/models';
 import { CommonModule } from '@angular/common';
@@ -50,6 +51,19 @@ export class PokemonFiltersComponent {
   selectedRegion = signal<FilterOption | null>(null);
   selectedGeneration = signal<FilterOption | null>(null);
 
+  constructor() {
+    // Aplicar filtros automáticamente cuando cambien los valores
+    effect(() => {
+      const filters: PokemonFilters = {
+        search: this.search(),
+        type: this.selectedType()?.value || undefined,
+        region: this.selectedRegion()?.value || undefined,
+        generation: this.selectedGeneration()?.value || undefined,
+      };
+      this.filtersApplied.emit(filters);
+    });
+  }
+
   activeFilters = computed<ActiveFilter[]>(() => {
     const filters: ActiveFilter[] = [];
     if (this.search()) {
@@ -79,23 +93,12 @@ export class PokemonFiltersComponent {
     return filters;
   });
 
-  applyFilters() {
-    const filters: PokemonFilters = {
-      search: this.search(),
-      type: this.selectedType()?.value || undefined,
-      region: this.selectedRegion()?.value || undefined,
-      generation: this.selectedGeneration()?.value || undefined,
-    };
-    this.filtersApplied.emit(filters);
-  }
-
   clearFilters() {
     this.search.set('');
     this.selectedType.set(null);
     this.selectedRegion.set(null);
     this.selectedGeneration.set(null);
-
-    this.applyFilters();
+    // Los filtros se aplicarán automáticamente por el effect
   }
 
   removeFilter(key: FilterKey) {
@@ -113,7 +116,17 @@ export class PokemonFiltersComponent {
         this.selectedGeneration.set(null);
         break;
     }
+    // Los filtros se aplicarán automáticamente por el effect
+  }
 
-    this.applyFilters();
+  // Método legacy para compatibilidad manual
+  applyFilters() {
+    const filters: PokemonFilters = {
+      search: this.search(),
+      type: this.selectedType()?.value || undefined,
+      region: this.selectedRegion()?.value || undefined,
+      generation: this.selectedGeneration()?.value || undefined,
+    };
+    this.filtersApplied.emit(filters);
   }
 }

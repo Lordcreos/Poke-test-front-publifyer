@@ -47,16 +47,10 @@
       <button
         pButton
         type="button"
-        label="{{ 'filter.apply' | translate }}"
-        (click)="applyFilters()"
-        class="p-button-primary rounded-full! px-6!"
-      ></button>
-      <button
-        pButton
-        type="button"
         label="{{ 'filter.clear' | translate }}"
         (click)="clearFilters()"
         class="p-button-secondary rounded-full! border-2! border-black! px-6! bg-white!"
+        [disabled]="activeFilters().length === 0"
       ></button>
     </div>
   </div>

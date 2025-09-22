@@ -74,7 +74,8 @@ export class PokemonSearchTableComponent {
   }
 
   searchPokemon(filters: PokemonFilters) {
-    this.pokemonData.getPokemons(filters);
+    console.log('Applying filters:', filters);
+    this.pokemonData.setFilters(filters);
   }
 
   lighten(hex: string, percent: number) {
