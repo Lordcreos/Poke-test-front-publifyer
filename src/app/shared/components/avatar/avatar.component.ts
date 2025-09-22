@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api';
@@ -14,8 +15,10 @@ import { MenuModule } from 'primeng/menu';
 export class AvatarComponent {
   private translate = inject(TranslateService);
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   private menuConfig: { key: string; icon: string; command: () => void }[] = [
+    { key: 'avatar.profile', icon: 'pi pi-user', command: () => this.goToProfile() },
     { key: 'avatar.logout', icon: 'pi pi-sign-out', command: () => this.logout() },
   ];
 
@@ -39,5 +42,9 @@ export class AvatarComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
   }
 }

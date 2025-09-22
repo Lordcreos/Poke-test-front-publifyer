@@ -1,0 +1,131 @@
+<div class="container mx-auto p-6 max-w-2xl">
+  <p-card header="{{ 'profile.title' | translate }}" class="shadow-lg">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      
+      <!-- Nombre -->
+      <div class="field">
+        <label for="name" class="block font-medium mb-2">
+          {{ 'register.name' | translate }} <span class="text-red-500">*</span>
+        </label>
+        <input
+          pInputText
+          id="name"
+          formControlName="name"
+          class="w-full"
+          [class.ng-invalid]="isFieldInvalid('name')"
+        />
+        @if (isFieldInvalid('name')) {
+          <small class="text-red-500 block mt-1">{{ getFieldError('name') }}</small>
+        }
+      </div>
+
+      <!-- Apellido -->
+      <div class="field">
+        <label for="lastName" class="block font-medium mb-2">
+          {{ 'register.lastName' | translate }} <span class="text-red-500">*</span>
+        </label>
+        <input
+          pInputText
+          id="lastName"
+          formControlName="lastName"
+          class="w-full"
+          [class.ng-invalid]="isFieldInvalid('lastName')"
+        />
+        @if (isFieldInvalid('lastName')) {
+          <small class="text-red-500 block mt-1">{{ getFieldError('lastName') }}</small>
+        }
+      </div>
+
+      <!-- Email -->
+      <div class="field">
+        <label for="email" class="block font-medium mb-2">
+          {{ 'register.email' | translate }} <span class="text-red-500">*</span>
+        </label>
+        <input
+          pInputText
+          id="email"
+          type="email"
+          formControlName="email"
+          class="w-full"
+          [class.ng-invalid]="isFieldInvalid('email')"
+        />
+        @if (isFieldInvalid('email')) {
+          <small class="text-red-500 block mt-1">{{ getFieldError('email') }}</small>
+        }
+      </div>
+
+      <!-- Teléfono -->
+      <div class="field">
+        <label for="phone" class="block font-medium mb-2">
+          {{ 'register.phone' | translate }}
+        </label>
+        <input
+          pInputText
+          id="phone"
+          formControlName="phone"
+          class="w-full"
+        />
+      </div>
+
+      <!-- Ciudad -->
+      <div class="field">
+        <label for="city" class="block font-medium mb-2">
+          {{ 'register.city' | translate }}
+        </label>
+        <p-select
+          id="city"
+          [options]="cities()"
+          optionLabel="label"
+          optionValue="value"
+          [filter]="true"
+          filterBy="label"
+          showClear="true"
+          class="w-full"
+          placeholder="{{ 'register.city' | translate }}"
+          formControlName="city"
+          (onFilter)="getCities($event.filter)"
+          (onShow)="loadAllCities()"
+        />
+      </div>
+
+      <!-- ¿Tiene referencia? -->
+      <div class="field">
+        <label class="block font-medium mb-2">
+          {{ 'register.hasReference' | translate }} <span class="text-red-500">*</span>
+        </label>
+        <p-selectButton
+          formControlName="hasReference"
+          [options]="hasReferenceOptions"
+          optionLabel="label"
+          optionValue="value"
+          class="w-full"
+        ></p-selectButton>
+        @if (isFieldInvalid('hasReference')) {
+          <small class="text-red-500 block mt-1">{{ getFieldError('hasReference') }}</small>
+        }
+      </div>
+
+      <!-- Botones -->
+      <div class="flex gap-3 pt-4">
+        <p-button
+          type="submit"
+          label="{{ 'profile.updateButton' | translate }}"
+          icon="pi pi-save"
+          [loading]="isLoading()"
+          [disabled]="profileForm.invalid"
+          class="flex-1"
+        ></p-button>
+        
+        <p-button
+          type="button"
+          label="{{ 'profile.cancelButton' | translate }}"
+          icon="pi pi-times"
+          severity="secondary"
+          (click)="goBack()"
+          class="flex-1"
+        ></p-button>
+      </div>
+      
+    </form>
+  </p-card>
+</div>

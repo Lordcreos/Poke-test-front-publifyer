@@ -59,7 +59,16 @@
     "myTeam": "Mi Equipo"
   },
 
+  "profile": {
+    "title": "Perfil",
+    "updateButton": "Actualizar Perfil",
+    "cancelButton": "Cancelar",
+    "updateSuccess": "Perfil actualizado con éxito",
+    "updateError": "Error al actualizar el perfil"
+  },
+
   "avatar": {
+    "profile": "Perfil",
     "logout": "Cerrar sesión"
   },
 

@@ -59,7 +59,16 @@
     "upgradeAccount": "Register as a trainer to access all features"
   },
 
+  "profile": {
+    "title": "Profile",
+    "updateButton": "Update Profile",
+    "cancelButton": "Cancel",
+    "updateSuccess": "Profile updated successfully",
+    "updateError": "Error updating profile"
+  },
+
   "avatar": {
+    "profile": "Profile",
     "logout": "Logout"
   },
 

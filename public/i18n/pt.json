@@ -59,7 +59,16 @@
     "upgradeAccount": "Registre-se como treinador para acessar todas as funcionalidades"
   },
 
+  "profile": {
+    "title": "Perfil",
+    "updateButton": "Atualizar Perfil",
+    "cancelButton": "Cancelar",
+    "updateSuccess": "Perfil atualizado com sucesso",
+    "updateError": "Erro ao atualizar o perfil"
+  },
+
   "avatar": {
+    "profile": "Perfil",
     "logout": "Sair"
   },
 

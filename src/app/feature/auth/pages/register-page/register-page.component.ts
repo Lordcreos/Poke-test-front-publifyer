@@ -101,13 +101,32 @@ export default class RegisterPageComponent {
       });
   }
   async getCities(city: string): Promise<void> {
-    const cities = await this.citiesService.getCitiesOptions(city);
+    try {
+      const cities = await this.citiesService.getCitiesOptions(city);
+      const cityOptions = cities.map((c) => ({
+        label: `${c.name} (${c.country_code})`,
+        value: `${c.name} (${c.country_code})`,
+      }));
+      this.cities.set(cityOptions);
+    } catch (error) {
+      console.error('Error loading cities:', error);
+      this.cities.set([]);
+    }
+  }
 
-    const cityOptions = cities.map((c) => ({
-      label: `${c.name} (${c.country_code})`,
-      value: `${c.name} (${c.country_code})`,
+  async loadAllCities(): Promise<void> {
+    // Cargar ciudades populares cuando se abre el dropdown sin filtro
+    const popularCities = [
+      'Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Zaragoza',
+      'Málaga', 'Murcia', 'Palma', 'Las Palmas', 'Bilbao',
+      'Alicante', 'Córdoba', 'Valladolid', 'Vigo', 'Gijón'
+    ];
+    
+    const cityOptions = popularCities.map((city) => ({
+      label: `${city} (ES)`,
+      value: `${city} (ES)`,
     }));
-
+    
     this.cities.set(cityOptions);
   }
 

@@ -110,6 +110,7 @@
           placeholder="{{ 'register.city' | translate }}"
           formControlName="city"
           (onFilter)="getCities($event.filter)"
+          (onShow)="loadAllCities()"
         />
       </div>
 
