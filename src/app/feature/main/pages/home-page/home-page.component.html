@@ -1,0 +1,118 @@
+<h1 class="text-xl font-bold mx-4">
+  {{ 'homePage.welcomeMessage' | translate }}, {{ currentUser?.name }}!
+</h1>
+
+<section class="flex flex-col gap-4 mt-6 border rounded-3xl border-[#D9E7FF] p-6 mx-6">
+  <span class="font-bold text-lg">
+    {{ 'homePage.summary' | translate }}
+  </span>
+  <div class="flex flex-row gap-4 overflow-x-auto pb-6 text-gray-600">
+    <article
+      class="min-w-fit w-full flex flex-col items-start justify-center p-4 border rounded-xl border-[#D9E7FF]"
+    >
+      <span>
+        {{ 'homePage.capturedPokemons' | translate }}
+      </span>
+      <span>
+        <strong class="text-2xl">{{ pokemonCount() }}</strong> {{ 'homePage.of' | translate }}
+        {{ pokemonTotalCount() }} {{ 'homePage.available' | translate }}
+      </span>
+    </article>
+    <article
+      class="min-w-fit w-full flex flex-col items-start justify-center p-4 border rounded-xl border-[#D9E7FF]"
+    >
+      <span> Pokedex </span>
+      <span>
+        <strong class="text-2xl">{{ pokedexProgress() | percent }}</strong>
+        {{ 'homePage.ofProgress' | translate }}
+      </span>
+    </article>
+    <article
+      class="min-w-fit w-full flex flex-col items-start justify-center p-4 border rounded-xl border-[#D9E7FF]"
+    >
+      <span> {{ 'homePage.averageLevel' | translate }} </span>
+      <span>
+        <strong class="text-2xl">{{ averageLevel() | number : '1.0-0' }}</strong>
+        {{ 'homePage.ofCollection' | translate }}
+      </span>
+    </article>
+    <article
+      class="min-w-fit w-full flex flex-col items-start justify-center p-4 border rounded-xl border-[#D9E7FF]"
+    >
+      <span> {{ 'homePage.favoriteType' | translate }} </span>
+      <span>
+        <strong class="text-2xl">{{ `pokemonType.${favoriteType()}` | translate }}</strong>
+        {{ 'homePage.moreCollection' | translate }}
+      </span>
+    </article>
+    <article
+      class="min-w-fit w-full flex flex-col items-start justify-center p-4 border rounded-xl border-[#D9E7FF]"
+    >
+      <span> {{ 'homePage.experienceCount' | translate }} </span>
+      <span>
+        <strong class="text-2xl">{{ experienceCount() | number : '1.0-0' }}</strong>
+        {{ 'homePage.experienceAmount' | translate }}
+      </span>
+    </article>
+    <article
+      class="min-w-fit w-full flex flex-col items-start justify-center p-4 border rounded-xl border-[#D9E7FF]"
+    >
+      <span> {{ 'homePage.powerfulPokemon' | translate }} </span>
+      <span>
+        <strong class="text-2xl">{{ powerfulPokemon()?.name | titlecase }}</strong>
+        {{ powerfulPokemon()?.attack }}
+        {{ 'homePage.ofTotalPower' | translate }}
+      </span>
+    </article>
+  </div>
+</section>
+
+<br />
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-6">
+  <div>
+    <section class="flex flex-col gap-4 mt-6 border rounded-3xl border-[#D9E7FF] p-4">
+      <span class="font-bold text-lg">
+        {{ 'homePage.myPokemons' | translate }}
+      </span>
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-2 overflow-auto">
+        @for (pokemon of displayedPokemons(); track pokemon.id) {
+
+        <pokemon-home-card [pokemon]="pokemon"></pokemon-home-card>
+        }
+      </div>
+    </section>
+    <div class="flex justify-end">
+      @if (lastCaptured().length > 4) {
+      <button (click)="toggleShowAllMyPokemons()" class="text-blue-600 underline mt-2">
+        {{
+          showAllMyPokemons() ? ('homePage.showLess' | translate) : ('homePage.showAll' | translate)
+        }}
+      </button>
+      }
+    </div>
+  </div>
+
+  <div>
+    <section class="flex flex-col gap-4 mt-6 border rounded-3xl border-[#D9E7FF] p-4">
+      <span class="font-bold text-lg">
+        {{ 'homePage.recommendedPokemons' | translate }}
+      </span>
+      <div class="flex flex-col gap-2">
+        @for (pokemon of displayedRecommendedPokemons(); track pokemon.id) {
+        <pokemon-recomended-card [pokemon]="pokemon"></pokemon-recomended-card>
+        }
+      </div>
+    </section>
+    <div class="flex justify-end">
+      @if (recommendedPokemons().length > 2) {
+      <button (click)="toggleShowAllRecommendedPokemons()" class="text-blue-600 underline mt-2">
+        {{
+          showAllRecommendedPokemons()
+            ? ('homePage.showLess' | translate)
+            : ('homePage.showAll' | translate)
+        }}
+      </button>
+      }
+    </div>
+  </div>
+</div>

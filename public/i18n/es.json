@@ -1,0 +1,203 @@
+{
+  "auth-layout": {
+    "welcome": "Bienvenido a"
+  },
+  "login": {
+    "title": "Iniciar sesión",
+    "email": "Correo",
+    "emailRequired": "El correo es obligatorio.",
+    "emailInvalid": "Por favor, introduce una dirección de correo válida.",
+    "password": "Contraseña",
+    "passwordRequired": "La contraseña es obligatoria.",
+    "rememberPassword": "Recordar contraseña",
+    "loginButton": "Iniciar sesión",
+    "noAccount": "Si no tienes una cuenta,",
+    "signUp": "regístrate aquí."
+  },
+  "register": {
+    "title": "Regístrate",
+    "name": "Nombre",
+    "nameRequired": "El nombre es obligatorio.",
+    "lastName": "Apellido",
+    "lastNameRequired": "El apellido es obligatorio.",
+    "email": "Correo",
+    "emailRequired": "El correo es obligatorio.",
+    "emailInvalid": "Por favor, introduce una dirección de correo válida.",
+    "phone": "Teléfono",
+    "city": "Ciudad",
+    "hasReference": "¿Tienes una referencia?",
+    "hasReference.Yes": "Sí",
+    "hasReference.No": "No",
+    "password": "Contraseña",
+    "passwordPrompt": "Ingresa una contraseña segura.",
+    "passwordWeak": "Baja",
+    "passwordMedium": "Media",
+    "passwordStrong": "Alta",
+    "passwordRequired": "La contraseña es obligatoria.",
+    "passwordMinLength": "La contraseña debe tener al menos 8 caracteres.",
+    "passwordPattern": "La contraseña debe incluir mayúsculas, minúsculas y números.",
+    "confirmPassword": "Confirmar contraseña",
+    "confirmPasswordRequired": "La confirmación de la contraseña es obligatoria.",
+    "passwordsMismatch": "Las contraseñas no coinciden.",
+    "registerButton": "Siguiente",
+    "hasAccount": "Si ya tienes una cuenta,",
+    "signIn": "inicia sesión aquí."
+  },
+
+  "main-layout": {
+    "home": "Inicio",
+    "pokedex": "Pokedex",
+    "logout": "Cerrar sesión",
+    "my-teams": "Mis equipos"
+  },
+
+  "avatar": {
+    "logout": "Cerrar sesión"
+  },
+
+  "filter": {
+    "title": "Filtros",
+    "input": "Buscar Pokémon...",
+    "placeholder": {
+      "type": "Tipo",
+      "region": "Región",
+      "generation": "Generación"
+    },
+    "apply": "Aplicar",
+    "clear": "Eliminar Filtros"
+  },
+
+  "filters": {
+    "allTypes": "Todos los tipos",
+    "allRegions": "Todas las regiones",
+    "allGenerations": "Todas las generaciones"
+  },
+
+  "pokedexPage": {
+    "captureNew": "Capturar nuevo Pokémon",
+    "findPokemon": "Buscar Pokémon",
+    "add": "Agregar",
+    "cancel": "Cancelar",
+    "results": "resultados",
+    "noPokemon": "No hay Pokémon en tu Pokédex",
+    "noPokemonDescription": "No se encontraron Pokémon con estos criterios. Intenta con otros filtros o agrega un nuevo Pokémon."
+  },
+
+  "pokemonSearchTable": {
+    "notFound": "No se encontraron Pokémon",
+    "name": "Nombre",
+    "type": "Tipo",
+    "level": "Nivel",
+    "region": "Región",
+    "generation": "Generación",
+    "hp": "PS",
+    "attack": "ATK",
+    "defense": "DEF",
+    "speed": "SPD",
+    "add": "Agregar"
+  },
+
+  "pokemonCard": {
+    "height": "Altura",
+    "weight": "Peso"
+  },
+
+  "homePage": {
+    "welcomeMessage": "¡Bienvenido",
+    "summary": "Resumen",
+    "capturedPokemons": "Pokemon Capturados",
+    "of": "de",
+    "available": "disponibles",
+    "ofProgress": "de progreso",
+    "averageLevel": "Nivel promedio",
+    "ofCollection": "de tu colección",
+    "favoriteType": "Tipo favorito",
+    "moreCollection": "más coleccionados",
+    "experienceCount": "Experiencia",
+    "experienceAmount": "puntos acumulados",
+    "powerfulPokemon": "Pokémon más fuerte",
+    "ofTotalPower": "de poder total",
+    "myPokemons": "Mis Pokémons",
+    "recommendedPokemons": "Recomendados",
+    "showAll": "Ver todos",
+    "showLess": "Ver menos"
+  },
+  "pokemonRecomended": {
+    "region": "Región",
+    "power": "Poder"
+  },
+
+  "myTeamsPage": {
+    "myTeams": "Mis equipos",
+    "manageYourTeams": "Crea y gestiona tus equipos pokemon",
+    "newTeam": "Nuevo equipo"
+  },
+
+  "teamForm": {
+    "teamName": "Nombre del equipo",
+    "maxMembers": "Límite de Pokemons (opcional)",
+    "teamMembersDescription": "Define cuántos pokemon puede tener tu qeuipo."
+  },
+
+  "teamSummary": {
+    "typesDistribution": "Distribución de tipos",
+    "teamStats": "Estadísticas del equipo",
+    "createdOn": "Creado el",
+    "hp": "PS",
+    "attack": "Ataque",
+    "defense": "Defensa",
+    "speed": "Velocidad",
+    "specialAttack": "Ataque Especial"
+  },
+
+  "teamPage": {
+    "noTeamFound": "No se encontró el equipo"
+  },
+
+  "pokemonType": {
+    "normal": "Normal",
+    "fighting": "Lucha",
+    "flying": "Volador",
+    "poison": "Veneno",
+    "ground": "Tierra",
+    "rock": "Roca",
+    "bug": "Bicho",
+    "ghost": "Fantasma",
+    "steel": "Acero",
+    "fire": "Fuego",
+    "water": "Agua",
+    "grass": "Planta",
+    "electric": "Eléctrico",
+    "psychic": "Psíquico",
+    "ice": "Hielo",
+    "dragon": "Dragón",
+    "dark": "Siniestro",
+    "fairy": "Hada",
+    "stellar": "Estelar",
+    "unknown": "Desconocido",
+    "shadow": "Sombra"
+  },
+
+  "TOAST": {
+    "LOGIN": {
+      "SUCCESS": "Inicio de sesión exitoso",
+      "INVALID_CREDENTIALS": "Usuario o contraseña incorrectos",
+      "ERROR": "Error durante el inicio de sesión"
+    },
+    "REGISTER": {
+      "SUCCESS": "Registro exitoso",
+      "INVALID_CREDENTIALS": "Correo ya en uso",
+      "ERROR": "Error durante el registro"
+    },
+    "LOGOUT": {
+      "SUCCESS": "Cierre de sesión exitoso",
+      "ERROR": "Error durante el cierre de sesión"
+    },
+    "POKEDEX": {
+      "ADD_SUCCESS": "Pokémon agregado a la Pokédex",
+      "ADD_ERROR": "Error al agregar el Pokémon a la Pokédex",
+      "REMOVE_SUCCESS": "Pokémon eliminado de la Pokédex",
+      "REMOVE_ERROR": "Error al eliminar el Pokémon de la Pokédex"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+<pokemon-filters [title]="''" (filtersApplied)="searchPokemon($event)" />
+
+@if (pokemons().length === 0) {
+<div class="flex flex-col items-center justify-center gap-4 mt-8">
+  <p class="text-gray-500 text-lg">
+    {{ 'pokemonSearchTable.notFound' | translate }}
+  </p>
+</div>
+} @else {
+<p-table
+  [value]="pokemons()"
+  [(selection)]="selectedPokemons"
+  (selectionChange)="onSelectionChange($event)"
+  [paginator]="true"
+  [rows]="10"
+  [sortMode]="'single'"
+  dataKey="id"
+  [tableStyle]="{ 'min-width': '50rem' }"
+>
+  <ng-template #header>
+    <tr>
+      <th></th>
+      <th></th>
+      <th pSortableColumn="name">
+        {{ 'pokemonSearchTable.name' | translate }}
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="types">
+        {{ 'pokemonSearchTable.type' | translate }}
+        <p-sortIcon field="types"></p-sortIcon>
+      </th>
+      <th pSortableColumn="level">
+        {{ 'pokemonSearchTable.level' | translate }}
+        <p-sortIcon field="level"></p-sortIcon>
+      </th>
+      <th pSortableColumn="attack">
+        {{ 'pokemonSearchTable.attack' | translate }}
+        <p-sortIcon field="attack"></p-sortIcon>
+      </th>
+      <th pSortableColumn="defense">
+        {{ 'pokemonSearchTable.defense' | translate }}
+        <p-sortIcon field="defense"></p-sortIcon>
+      </th>
+      <th pSortableColumn="speed">
+        {{ 'pokemonSearchTable.speed' | translate }}
+        <p-sortIcon field="speed"></p-sortIcon>
+      </th>
+      <th></th>
+    </tr>
+  </ng-template>
+
+  <ng-template #body let-pokemon>
+    <tr>
+      <td><p-tableCheckbox [value]="pokemon" /></td>
+      <td class="w-1/8">
+        <img
+          [src]="pokemon.image"
+          alt="{{ pokemon.name }}"
+          class="aspect-square w-12 h-12 rounded-full"
+        />
+      </td>
+      <td class="w-1/8">{{ pokemon.name | titlecase }}</td>
+      <td class="w-1/8">
+        <div class="flex flex-nowrap">
+          @for (type of pokemon.types; track $index) {
+          <pokemon-types [type]="type" />
+          }
+        </div>
+      </td>
+      <td class="w-1/8">Lv {{ pokemon.level }}</td>
+      <td class="w-1/8">{{ pokemon.attack }}</td>
+      <td class="w-1/8">{{ pokemon.defense }}</td>
+      <td class="w-1/8">{{ pokemon.speed }}</td>
+      <td class="w-1/8">
+        <p-button
+          label="{{ 'pokemonSearchTable.add' | translate }}"
+          severity="info"
+          (click)="togglePokemon(pokemon)"
+          styleClass="bg-transparent! text-blue-600! border-transparent!"
+        />
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+}

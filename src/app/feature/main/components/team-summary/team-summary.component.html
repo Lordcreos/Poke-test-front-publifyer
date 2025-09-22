@@ -1,0 +1,161 @@
+<div class="flex flex-col md:flex-row gap-4 mt-6 border rounded-3xl border-[#D9E7FF] w-full h-full">
+  <div class="flex-1 p-6 flex flex-col gap-2 min-w-0">
+    <div class="flex flex-row justify-between items-center w-full">
+      <h2 class="text-lg font-bold cursor-pointer" [routerLink]="['/my-teams', team()?.id]">
+        {{ team()?.teamName }}
+      </h2>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-trash"
+        class="p-button-rounded p-button-text p-button-plain !text-red-500"
+        (click)="deleteTeam()"
+      ></button>
+    </div>
+
+    <span>
+      {{ totalPokemons() }} Pokemon - {{ 'pokemonRecomended.power' | translate }}
+      {{ totalPower() }}
+    </span>
+
+    <div class="overflow-x-auto overflow-y-hidden mt-4 w-full">
+      <div class="flex flex-row gap-2 flex-nowrap min-w-full justify-between">
+        @for (pokemon of team()?.pokemons; track $index) {
+        <div class="flex-shrink-0">
+          <img
+            [src]="pokemon.image"
+            [alt]="pokemon.name"
+            class="h-48 w-48 aspect-square border border-[#C4C4C4] rounded-lg"
+          />
+          <div class="flex flex-row justify-start items-center gap-2 mt-2">
+            <span class="text-lg font-bold">{{ pokemon.name | titlecase }}</span>
+            <span>Lv {{ pokemon.level }}</span>
+          </div>
+          <div class="flex flex-row gap-1 mt-1">
+            @for (type of pokemon.types; track $index) {
+            <pokemon-types [type]="type" />
+            }
+          </div>
+        </div>
+        } @for (slot of slotsArray(); track slot) {
+        <button
+          (click)="showTable()"
+          class="h-48 w-48 aspect-square border border-dashed border-[#C4C4C4] flex items-center justify-center rounded-lg flex-shrink-0"
+        >
+          <i class="pi pi-plus text-[#C4C4C4] border rounded p-1"></i>
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="md:w-80 p-4 m-4 border border-[#D9E7FF] rounded-3xl flex flex-col gap-4">
+    <span class="font-bold">{{ 'teamSummary.typesDistribution' | translate }}</span>
+    <div class="flex flex-row gap-2 flex-wrap">
+      @for (type of typesSummary(); track $index) {
+      <pokemon-types [type]="type" />
+      }
+    </div>
+
+    <span class="font-bold">{{ 'teamSummary.teamStats' | translate }}</span>
+
+    <div class="flex flex-col gap-1 w-full">
+      <div class="flex justify-between text-sm font-medium">
+        <span>{{ 'teamSummary.hp' | translate }}</span>
+        <span>{{ totalStats().hp }}/1000</span>
+      </div>
+      <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+        <div
+          class="h-full bg-black rounded-full transition-all duration-300"
+          [style.width.%]="(totalStats().hp / 1000) * 100"
+        ></div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-1 w-full">
+      <div class="flex justify-between text-sm font-medium">
+        <span>{{ 'teamSummary.attack' | translate }}</span>
+        <span>{{ totalStats().attack }}/1000</span>
+      </div>
+      <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+        <div
+          class="h-full bg-black rounded-full transition-all duration-300"
+          [style.width.%]="(totalStats().attack / 1000) * 100"
+        ></div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-1 w-full">
+      <div class="flex justify-between text-sm font-medium">
+        <span>{{ 'teamSummary.defense' | translate }}</span>
+        <span>{{ totalStats().defense }}/1000</span>
+      </div>
+      <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+        <div
+          class="h-full bg-black rounded-full transition-all duration-300"
+          [style.width.%]="(totalStats().defense / 1000) * 100"
+        ></div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-1 w-full">
+      <div class="flex justify-between text-sm font-medium">
+        <span>{{ 'teamSummary.specialAttack' | translate }}</span>
+        <span>{{ totalStats().special_attack }}/1000</span>
+      </div>
+      <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+        <div
+          class="h-full bg-black rounded-full transition-all duration-300"
+          [style.width.%]="(totalStats().special_attack / 1000) * 100"
+        ></div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-1 w-full">
+      <div class="flex justify-between text-sm font-medium">
+        <span> {{ 'teamSummary.speed' | translate }} </span>
+        <span>{{ totalStats().speed }}/1000</span>
+      </div>
+      <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+        <div
+          class="h-full bg-black rounded-full transition-all duration-300"
+          [style.width.%]="(totalStats().speed / 1000) * 100"
+        ></div>
+      </div>
+    </div>
+    <span class="text-sm text-gray-500">
+      {{ 'teamSummary.createdOn' | translate }} {{ team()?.dateCreated | date : 'short' }}
+    </span>
+  </div>
+</div>
+
+<p-dialog
+  [(visible)]="display"
+  [modal]="true"
+  [style]="{ width: '80rem', height: '90vh' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <ng-template pTemplate="header">
+    <h2 class="text-lg font-bold">
+      {{ 'pokedexPage.findPokemon' | translate }}
+    </h2>
+  </ng-template>
+
+  @if (display()) {
+  <pokemon-search-table [usePokedex]="true" (selectedChange)="onSelectedChange($event)" />
+  }
+
+  <ng-template pTemplate="footer">
+    <div class="flex justify-end gap-4 mt-6">
+      <p-button
+        label="{{ 'pokedexPage.cancel' | translate }}"
+        severity="secondary"
+        (click)="onCancel()"
+        styleClass="px-6"
+      ></p-button>
+      <p-button
+        label="{{ 'pokedexPage.add' | translate }}"
+        severity="primary"
+        (click)="onAdd()"
+        styleClass="px-6"
+      ></p-button>
+    </div>
+  </ng-template>
+</p-dialog>

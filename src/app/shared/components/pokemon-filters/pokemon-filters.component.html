@@ -1,0 +1,74 @@
+@if (title()!="") {
+
+<h1 class="text-3xl font-bold mb-4">
+  {{ title() | translate }}
+</h1>
+}
+<div class="p-fluid flex flex-col gap-3 max-w-full">
+  <div class="flex flex-col lg:flex-row gap-2">
+    <input
+      pInputText
+      type="text"
+      placeholder="{{ 'filter.input' | translate }}"
+      class="flex-1"
+      [(ngModel)]="search"
+    />
+
+    <div class="flex flex-1 gap-2 flex-wrap lg:flex-nowrap">
+      <p-select
+        [options]="types()"
+        optionLabel="label"
+        placeholder="{{ 'filter.placeholder.type' | translate }}"
+        [ngModel]="selectedType()"
+        (ngModelChange)="selectedType.set($event)"
+        class="flex-1"
+      ></p-select>
+
+      <p-select
+        [options]="regions()"
+        optionLabel="label"
+        placeholder="{{ 'filter.placeholder.region' | translate }}"
+        [ngModel]="selectedRegion()"
+        (ngModelChange)="selectedRegion.set($event)"
+        class="flex-1"
+      ></p-select>
+
+      <p-select
+        [options]="generations()"
+        optionLabel="label"
+        placeholder="{{ 'filter.placeholder.generation' | translate }}"
+        [ngModel]="selectedGeneration()"
+        (ngModelChange)="selectedGeneration.set($event)"
+        class="flex-1"
+      ></p-select>
+    </div>
+
+    <div class="flex gap-2">
+      <button
+        pButton
+        type="button"
+        label="{{ 'filter.apply' | translate }}"
+        (click)="applyFilters()"
+        class="p-button-primary rounded-full! px-6!"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="{{ 'filter.clear' | translate }}"
+        (click)="clearFilters()"
+        class="p-button-secondary rounded-full! border-2! border-black! px-6! bg-white!"
+      ></button>
+    </div>
+  </div>
+
+  <div class="flex gap-2 flex-wrap mt-2">
+    @for (filter of activeFilters(); track $index) {
+    <p-chip
+      [label]="filter.label"
+      removable="true"
+      (onRemove)="removeFilter(filter.key)"
+      class="bg-black! text-white! [&_.p-chip-remove-icon]:text-white! [&_.p-chip-remove-icon:hover]:text-gray-300! [&_.p-chip-remove-icon]:transition-colors [&_.p-chip-remove-icon]:duration-200"
+    />
+    }
+  </div>
+</div>

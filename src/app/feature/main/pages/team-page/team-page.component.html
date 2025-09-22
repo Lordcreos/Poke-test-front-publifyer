@@ -1,0 +1,159 @@
+@if (team()){
+
+<div class="flex flex-col gap-4 mt-6 w-full h-full">
+  <div class="flex flex-row justify-between items-center w-full px-4 mx-4">
+    <h2 class="text-2xl font-bold cursor-pointer">
+      {{ team()?.teamName }}
+    </h2>
+    <button
+      pButton
+      type="button"
+      icon="pi pi-trash"
+      class="p-button-rounded p-button-text p-button-plain !text-red-500"
+      (click)="deleteTeam()"
+    ></button>
+  </div>
+  <div class="flex flex-row justify-between items-center w-full px-4 mx-4">
+    <span>
+      {{ totalPokemons() }} Pokemon - {{ 'pokemonRecomended.power' | translate }}
+      {{ totalPower() }}
+    </span>
+  </div>
+  <div class="p-4 m-4 border border-[#D9E7FF] rounded-3xl flex flex-col gap-4">
+    <div class="flex flex-row justify-between">
+      <span class="font-bold">{{ 'teamSummary.typesDistribution' | translate }}</span>
+      <span class="text-sm text-gray-500">
+        {{ 'teamSummary.createdOn' | translate }} {{ team()?.dateCreated | date : 'short' }}
+      </span>
+    </div>
+    <div class="flex flex-row gap-2 flex-wrap">
+      @for (type of typesSummary(); track $index) {
+      <pokemon-types [type]="type" />
+      }
+    </div>
+
+    <span class="font-bold">{{ 'teamSummary.teamStats' | translate }}</span>
+
+    <div class="flex flex-row gap-4 overflow-x-auto pb-2">
+      <div class="flex flex-col gap-1 w-full flex-nowrap min-w-40">
+        <div class="flex justify-between text-sm font-medium">
+          <span>{{ 'teamSummary.hp' | translate }}</span>
+          <span>{{ totalStats().hp }}/1000</span>
+        </div>
+        <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-black rounded-full transition-all duration-300"
+            [style.width.%]="(totalStats().hp / 1000) * 100"
+          ></div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1 w-full flex-nowrap min-w-40">
+        <div class="flex justify-between text-sm font-medium">
+          <span>{{ 'teamSummary.attack' | translate }}</span>
+          <span>{{ totalStats().attack }}/1000</span>
+        </div>
+        <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-black rounded-full transition-all duration-300"
+            [style.width.%]="(totalStats().attack / 1000) * 100"
+          ></div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1 w-full flex-nowrap min-w-40">
+        <div class="flex justify-between text-sm font-medium">
+          <span>{{ 'teamSummary.defense' | translate }}</span>
+          <span>{{ totalStats().defense }}/1000</span>
+        </div>
+        <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-black rounded-full transition-all duration-300"
+            [style.width.%]="(totalStats().defense / 1000) * 100"
+          ></div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1 w-full flex-nowrap min-w-40">
+        <div class="flex justify-between text-sm font-medium">
+          <span>{{ 'teamSummary.specialAttack' | translate }}</span>
+          <span>{{ totalStats().special_attack }}/1000</span>
+        </div>
+        <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-black rounded-full transition-all duration-300"
+            [style.width.%]="(totalStats().special_attack / 1000) * 100"
+          ></div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1 w-full flex-nowrap min-w-40">
+        <div class="flex justify-between text-sm font-medium">
+          <span> {{ 'teamSummary.speed' | translate }} </span>
+          <span>{{ totalStats().speed }}/1000</span>
+        </div>
+        <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-black rounded-full transition-all duration-300"
+            [style.width.%]="(totalStats().speed / 1000) * 100"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-1 p-6 flex flex-col gap-2 min-w-0">
+    <div class="overflow-x-auto overflow-y-hidden mt-4 w-full">
+      <div class="flex flex-row gap-2 flex-nowrap min-w-full justify-between">
+        @for (pokemon of team()?.pokemons; track $index) {
+        <pokemon-card [pokemon]="pokemon"></pokemon-card>
+        } @for (slot of slotsArray(); track slot) {
+        <button
+          (click)="showTable()"
+          class="w-80 h-[30rem]aspect-square border border-dashed border-[#C4C4C4] flex items-center justify-center rounded-lg flex-shrink-0"
+        >
+          <i class="pi pi-plus text-[#C4C4C4] border rounded p-1"></i>
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  [(visible)]="display"
+  [modal]="true"
+  [style]="{ width: '80rem', height: '90vh' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <ng-template pTemplate="header">
+    <h2 class="text-lg font-bold">
+      {{ 'pokedexPage.findPokemon' | translate }}
+    </h2>
+  </ng-template>
+
+  @if (display()) {
+  <pokemon-search-table [usePokedex]="true" (selectedChange)="onSelectedChange($event)" />
+  }
+
+  <ng-template pTemplate="footer">
+    <div class="flex justify-end gap-4 mt-6">
+      <p-button
+        label="{{ 'pokedexPage.cancel' | translate }}"
+        severity="secondary"
+        (click)="onCancel()"
+        styleClass="px-6"
+      ></p-button>
+      <p-button
+        label="{{ 'pokedexPage.add' | translate }}"
+        severity="primary"
+        (click)="onAdd()"
+        styleClass="px-6"
+      ></p-button>
+    </div>
+  </ng-template>
+</p-dialog>
+
+}@else {
+
+<p>
+  {{ 'teamPage.noTeamFound' | translate }}
+</p>
+}

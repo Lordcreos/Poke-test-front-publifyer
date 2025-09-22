@@ -1,0 +1,79 @@
+<p-toast />
+
+<div
+  class="card flex flex-col justify-center bg-white/20 rounded-3xl max-w-lg w-full mx-auto lg:mx-0 p-4 lg:p-10"
+>
+  <h2 class="text-2xl font-bold mb-4 text-center">
+    {{ 'login.title' | translate }}
+  </h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogIn()" class="flex flex-col gap-4 min-w-full">
+    <div class="flex flex-col gap-1 mb-2">
+      <label class="pl-2 font-normal text-sm" for="email">
+        {{ 'login.email' | translate }}
+      </label>
+
+      <input
+        pInputText
+        type="text"
+        id="email"
+        class="rounded-full! w-full!"
+        formControlName="email"
+        [invalid]="isInvalid('email')"
+      />
+      @if (isInvalid('email')) {
+      <p-message severity="error" size="small" variant="simple" class="px-2">
+        {{ (loginForm.get('email')?.errors?.['required']
+          ? 'login.emailRequired'
+          : 'login.emailInvalid') | translate }}
+      </p-message>
+      }
+    </div>
+
+    <div class="flex flex-col gap-1 mb-2">
+      <label class="pl-2 font-normal text-sm" for="password">
+        {{ 'login.password' | translate }}
+      </label>
+
+      <input
+        pInputText
+        type="password"
+        id="password"
+        class="rounded-full!"
+        formControlName="password"
+        [invalid]="isInvalid('password')"
+      />
+      @if (isInvalid('password')) {
+      <p-message severity="error" size="small" variant="simple" class="px-2"
+        >{{ (loginForm.get('password')?.errors?.['required']
+          ? 'login.passwordRequired'
+          : '') | translate }}
+      </p-message>
+      }
+    </div>
+
+    <div class="flex items-center gap-2 pl-2">
+      <p-checkbox binary="true" formControlName="rememberMe"></p-checkbox>
+      <label class="text-sm">
+        {{ 'login.rememberPassword' | translate }}
+      </label>
+    </div>
+
+    <button
+      pButton
+      type="submit"
+      [disabled]="loginForm.invalid"
+      class="w-fit! mx-auto bg-[#5A5BDC]! hover:bg-[#4A4AC8]! disabled:bg-[#A0A0D8]! rounded-3xl! border-[#5A5BDC]!"
+    >
+      <span pButtonLabel class="px-2 font-bold text-xl">
+        {{ 'login.loginButton' | translate }}
+      </span>
+    </button>
+  </form>
+
+  <div class="my-4 text-center text-sm">
+    {{ 'login.noAccount' | translate }}
+    <a routerLink="../register" class="underline cursor-pointer">
+      {{ 'login.signUp' | translate }}
+    </a>
+  </div>
+</div>

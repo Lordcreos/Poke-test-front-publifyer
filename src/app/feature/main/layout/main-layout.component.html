@@ -1,0 +1,32 @@
+<p-menubar [model]="items()">
+  <ng-template pTemplate="start">
+    <a routerLink="/" class="text-white no-underline font-bold text-xl mr-8">PokéTrainer</a>
+  </ng-template>
+
+  <ng-template #item let-item let-root="root">
+    <a
+      pRipple
+      class="p-menubar-item-link flex items-center gap-1"
+      [routerLink]="item.routerLink"
+      [routerLinkActive]="['bg-white/20!', 'rounded-full!']"
+      [routerLinkActiveOptions]="
+        item.routerLink === '/' || item.routerLink === '/pokedex'
+          ? { exact: true }
+          : { exact: false }
+      "
+    >
+      <span>{{ item.label }}</span>
+      <i class="ml-auto pi pi-angle-down"></i>
+    </a>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <div class="flex items-center gap-2">
+      <language-switcher class="text-white"></language-switcher>
+      <avatar></avatar>
+    </div>
+  </ng-template>
+</p-menubar>
+<main class="p-4">
+  <router-outlet></router-outlet>
+</main>

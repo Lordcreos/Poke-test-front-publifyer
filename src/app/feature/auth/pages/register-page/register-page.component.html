@@ -1,0 +1,213 @@
+<div
+  class="card flex flex-col justify-center bg-white/20 rounded-3xl max-w-xl w-full mx-auto lg:mx-0 p-4 lg:p-10"
+>
+  <h2 class="text-2xl font-bold mb-4 text-center">
+    {{ 'register.title' | translate }}
+  </h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="flex flex-col gap-4 min-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex flex-col gap-1 mb-2">
+        <label class="pl-2 font-normal text-sm sr-only" for="name">
+          {{ 'register.name' | translate }}
+        </label>
+
+        <input
+          pInputText
+          type="text"
+          id="name"
+          class="rounded-full! w-full! uppercase placeholder:normal-case"
+          placeholder="{{ 'register.name' | translate }}*"
+          formControlName="name"
+          [invalid]="isInvalid('name')"
+        />
+
+        @if(isInvalid('name')) {
+        <p-message severity="error" size="small" variant="simple" class="px-2">
+          {{ 'register.nameRequired' | translate }}
+        </p-message>
+        }
+      </div>
+
+      <div class="flex flex-col gap-1 mb-2">
+        <label class="pl-2 font-normal text-sm sr-only" for="lastName">
+          {{ 'register.lastName' | translate }}
+        </label>
+
+        <input
+          pInputText
+          type="text"
+          id="lastName"
+          class="rounded-full! w-full! uppercase placeholder:normal-case"
+          placeholder="{{ 'register.lastName' | translate }}*"
+          formControlName="lastName"
+          [invalid]="isInvalid('lastName')"
+        />
+
+        @if(isInvalid('lastName')) {
+        <p-message severity="error" size="small" variant="simple" class="px-2">
+          {{ 'register.lastNameRequired' | translate }}
+        </p-message>
+        }
+      </div>
+
+      <div class="flex flex-col gap-1 mb-2">
+        <label class="pl-2 font-normal text-sm sr-only" for="email">
+          {{ 'register.email' | translate }}
+        </label>
+
+        <input
+          pInputText
+          type="email"
+          id="email"
+          class="rounded-full! w-full! lowercase placeholder:normal-case"
+          placeholder="{{ 'register.email' | translate }}*"
+          formControlName="email"
+          [invalid]="isInvalid('email')"
+        />
+
+        @if(isInvalid('email')) {
+        <p-message severity="error" size="small" variant="simple" class="px-2">
+          @if(registerForm.get('email')?.errors?.['required']) {
+          {{ 'register.emailRequired' | translate }}
+          } @else if(registerForm.get('email')?.errors?.['email']) {
+          {{ 'register.emailInvalid' | translate }}
+          }
+        </p-message>
+        }
+      </div>
+
+      <div class="flex flex-col gap-1 mb-2">
+        <label class="pl-2 font-normal text-sm sr-only" for="phone">
+          {{ 'register.phone' | translate }}
+        </label>
+
+        <input
+          pInputText
+          type="tel"
+          id="phone"
+          pattern="[0-9+]*"
+          class="rounded-full! w-full!"
+          placeholder="{{ 'register.phone' | translate }}"
+          formControlName="phone"
+          [invalid]="isInvalid('phone')"
+        />
+      </div>
+
+      <div class="flex flex-col gap-1 mb-2">
+        <label class="pl-2 font-normal text-sm sr-only" for="city">
+          {{ 'register.city' | translate }}
+        </label>
+
+        <p-select
+          id="city"
+          [options]="cities()"
+          optionLabel="label"
+          optionValue="value"
+          [filter]="true"
+          filterBy="label"
+          showClear="true"
+          class="rounded-full! w-full!"
+          placeholder="{{ 'register.city' | translate }}"
+          formControlName="city"
+          (onFilter)="getCities($event.filter)"
+        />
+      </div>
+
+      <div class="flex flex-col gap-1 mb-2">
+        <label class="pl-2 font-normal text-sm sr-only" for="hasReference">
+          {{ 'register.hasReference' | translate }}
+        </label>
+
+        <p-select
+          id="hasReference"
+          [options]="[
+            { label: 'register.hasReference.Yes' | translate, value: true },
+            { label: 'register.hasReference.No' | translate, value: false }
+          ]"
+          class="rounded-full! w-full!"
+          placeholder="{{ 'register.hasReference' | translate }}"
+          formControlName="hasReference"
+        />
+      </div>
+
+      <div class="flex flex-col gap-1 mb-2">
+        <label class="pl-2 font-normal text-sm sr-only" for="password">
+          {{ 'register.password' | translate }}
+        </label>
+
+        <p-password
+          inputId="password"
+          inputStyleClass="rounded-full! w-full!"
+          placeholder="{{ 'register.password' | translate }}"
+          formControlName="password"
+          [invalid]="isInvalid('password')"
+          [toggleMask]="true"
+          [promptLabel]="'register.passwordPrompt' | translate"
+          [weakLabel]="'register.passwordWeak' | translate"
+          [mediumLabel]="'register.passwordMedium' | translate"
+          [strongLabel]="'register.passwordStrong' | translate"
+        />
+
+        @if(isInvalid('password')) {
+        <p-message severity="error" size="small" variant="simple" class="px-2">
+          @if(registerForm.get('password')?.errors?.['required']) {
+          {{ 'register.passwordRequired' | translate }}
+          } @else if(registerForm.get('password')?.errors?.['minlength']) {
+          {{ 'register.passwordMinLength' | translate }}
+          } @else if(registerForm.get('password')?.errors?.['pattern']) {
+          {{ 'register.passwordPattern' | translate }}
+          }
+        </p-message>
+        }
+      </div>
+
+      <div class="flex flex-col gap-1 mb-2">
+        <label class="pl-2 font-normal text-sm sr-only" for="confirmPassword">
+          {{ 'register.confirmPassword' | translate }}
+        </label>
+
+        <p-password
+          inputId="confirmPassword"
+          inputStyleClass="rounded-full! w-full!"
+          placeholder="{{ 'register.confirmPassword' | translate }}"
+          formControlName="confirmPassword"
+          [invalid]="isInvalid('confirmPassword')"
+          [feedback]="false"
+          [toggleMask]="true"
+        />
+
+        @if(isInvalid('confirmPassword')) {
+        <p-message severity="error" size="small" variant="simple" class="px-2">
+          {{ 'register.confirmPasswordRequired' | translate }}
+        </p-message>
+        }
+
+        <!-- Password mismatch -->
+        @if(registerForm.errors?.['passwordMismatch'] &&
+        registerForm.get('confirmPassword')?.touched) {
+        <p-message severity="error" size="small" variant="simple" class="px-2">
+          {{ 'register.passwordsMismatch' | translate }}
+        </p-message>
+        }
+      </div>
+    </div>
+
+    <button
+      pButton
+      type="submit"
+      [disabled]="registerForm.invalid"
+      class="w-fit! mx-auto bg-[#5A5BDC]! hover:bg-[#4A4AC8]! disabled:bg-[#A0A0D8]! rounded-3xl! border-[#5A5BDC]!"
+    >
+      <span pButtonLabel class="px-2 font-bold text-xl">
+        {{ 'register.registerButton' | translate }}
+      </span>
+    </button>
+  </form>
+
+  <div class="my-4 text-center text-sm">
+    {{ 'register.hasAccount' | translate }}
+    <a routerLink="../login" class="underline cursor-pointer">
+      {{ 'register.signIn' | translate }}
+    </a>
+  </div>
+</div>

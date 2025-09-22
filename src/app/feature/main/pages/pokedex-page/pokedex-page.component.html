@@ -1,0 +1,68 @@
+<div class="flex flex-row justify-between gap-2 items-start">
+  <pokemon-filters class="grow" (filtersApplied)="onFiltersApplied($event)" />
+  <p-button
+    label="{{ 'pokedexPage.captureNew' | translate }}"
+    (click)="showTable()"
+    styleClass="rounded-full! px-6!"
+  />
+
+  <p-dialog
+    [(visible)]="display"
+    [modal]="true"
+    [style]="{ width: '80rem', height: '90vh' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <ng-template pTemplate="header">
+      <h2 class="text-lg font-bold">
+        {{ 'pokedexPage.findPokemon' | translate }}
+      </h2>
+    </ng-template>
+
+    @if (display()) {
+    <pokemon-search-table (selectedChange)="onSelectedChange($event)" />
+    }
+
+    <ng-template pTemplate="footer">
+      <div class="flex justify-end gap-4 mt-6">
+        <p-button
+          label="{{ 'pokedexPage.cancel' | translate }}"
+          severity="secondary"
+          (click)="onCancel()"
+          styleClass="px-6"
+        ></p-button>
+        <p-button
+          label="{{ 'pokedexPage.add' | translate }}"
+          severity="primary"
+          (click)="onAdd()"
+          styleClass="px-6"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-dialog>
+</div>
+@if (filteredPokemons().length > 0 ) {
+<div class="flex flex-col gap-4 mt-6 border rounded-3xl border-[#D9E7FF] w-full h-full">
+  <h2 class="text-2xl font-bold px-6 pt-6">
+    Pokedex ({{ filteredPokemons().length }} {{ 'pokedexPage.results' | translate }} )
+  </h2>
+
+  <div class="flex flex-row gap-6 p-6 overflow-x-auto">
+    @for (pokemon of filteredPokemons(); track pokemon.id) {
+    <pokemon-card [pokemon]="pokemon" />
+    }
+  </div>
+</div>
+
+}@else {
+<div
+  class="flex flex-col items-center justify-center gap-4 mt-6 border rounded-3xl border-[#D9E7FF] w-full h-96"
+>
+  <h2 class="text-2xl font-bold">
+    {{ 'pokedexPage.noPokemon' | translate }}
+  </h2>
+  <p class="text-center text-gray-500 px-6">
+    {{ 'pokedexPage.noPokemonDescription' | translate }}
+  </p>
+</div>
+}

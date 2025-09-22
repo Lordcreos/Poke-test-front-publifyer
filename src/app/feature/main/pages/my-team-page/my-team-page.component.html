@@ -1,0 +1,36 @@
+<div class="flex flex-row justify-between gap-2 items-start">
+  <div>
+    <h2 class="text-xl font-bold">{{ 'myTeamsPage.myTeams' | translate }}</h2>
+    <p class="text-sm text-gray-500">
+      {{ 'myTeamsPage.manageYourTeams' | translate }}
+    </p>
+  </div>
+
+  <p-button
+    label="{{ 'myTeamsPage.newTeam' | translate }}"
+    (click)="showTeamForm()"
+    styleClass="rounded-full! px-6!"
+  />
+</div>
+
+@for (team of teams(); track team.id) {
+<team-summary [team]="team" class="mt-4" />
+}
+
+<p-dialog
+  [(visible)]="display"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="w-1/2"
+>
+  <ng-template pTemplate="header">
+    <h2 class="text-lg font-bold">
+      {{ 'myTeamsPage.newTeam' | translate }}
+    </h2>
+  </ng-template>
+
+  <new-team-form (close)="display.set(!display())" />
+
+  <ng-template pTemplate="footer"> </ng-template>
+</p-dialog>

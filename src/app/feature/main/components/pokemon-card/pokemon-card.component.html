@@ -1,0 +1,51 @@
+<p-card class="w-80 h-[30rem] overflow-hidden p-2 rounded-3xl! border! border-[#D9E7FF]!">
+  <ng-template #header>
+    <div class="relative rounded-xl border border-[#D9E7FF] m-2">
+      <div
+        class="absolute -top-1 -right-1 text-lg font-semibold text-white bg-black bg-opacity-80 px-2 py-1 rounded-lg shadow"
+      >
+        #{{ pokemon()?.id }}
+      </div>
+      <img
+        [src]="pokemon()?.image"
+        alt="{{ pokemon()?.name }}"
+        class="aspect-square h-52 mx-auto"
+      />
+    </div>
+  </ng-template>
+  <ng-template #title>
+    <div class="flex flex-row items-center justify-between">
+      <div class="flex flex-row items-center gap-2">
+        <h2 class="text-lg font-bold">{{ pokemon()?.name | titlecase }}</h2>
+        <span class="text-sm"> Lv {{ pokemon()?.level }} </span>
+      </div>
+      <div class="flex flex-row gap-2">
+        @for (type of pokemon()?.types; track $index) {
+        <pokemon-types [type]="type" />
+        }
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #subtitle>
+    <span class="text-sm text-black">
+      {{ pokemon()?.region | titlecase }} {{ pokemon()?.generation | generation }}
+    </span>
+  </ng-template>
+  <div class="flex flex-col border rounded-xl border-[#D9E7FF] mb-2 p-2">
+    <span> EXP {{ pokemon()?.experience }} </span>
+    <span>
+      {{ 'pokemonCard.height' | translate }}
+      {{ pokemon()?.height | decimetersToMeters | number : '1.1-1' }} m
+    </span>
+    <span>
+      {{ 'pokemonCard.weight' | translate }}
+      {{ pokemon()?.weight | decimetersToMeters | number : '1.1-1' }} kg
+    </span>
+  </div>
+
+  <div class="flex flex-row justify-around border rounded-xl border-[#D9E7FF] mb-2 p-2">
+    <span>ATK {{ pokemon()?.attack }}</span>
+    <span>DEF {{ pokemon()?.defense }}</span>
+    <span>SPD {{ pokemon()?.speed }}</span>
+  </div>
+</p-card>

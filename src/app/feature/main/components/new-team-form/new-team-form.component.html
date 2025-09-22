@@ -1,0 +1,48 @@
+<form [formGroup]="teamForm" (ngSubmit)="onCreateNewTeam()" class="flex flex-col gap-4 min-w-full">
+  <div class="flex flex-col gap-1 mb-2">
+    <input
+      pInputText
+      type="text"
+      id="teamName"
+      formControlName="teamName"
+      class="rounded-none! border-transparent! border-b-gray-200!"
+    />
+    <label class="pl-2 font-normal" for="teamName">
+      {{ 'teamForm.teamName' | translate }}
+    </label>
+
+    <label class="pl-2 font-normal mt-4" for="maxMembers">
+      {{ 'teamForm.maxMembers' | translate }}
+    </label>
+    <p class="text-xs text-gray-500 pl-2 mb-1">
+      {{ 'teamForm.teamMembersDescription' | translate }}
+    </p>
+
+    <input
+      pInputNumber
+      type="number"
+      id="maxMembers"
+      formControlName="maxMembers"
+      class="rounded border! border-gray-200 w-fit! text-right!"
+      [min]="1"
+      [value]="6"
+    />
+  </div>
+  <div class="flex justify-end gap-4 mt-6">
+    <p-button
+      label="{{ 'pokedexPage.cancel' | translate }}"
+      severity="secondary"
+      (click)="onCancel()"
+      styleClass="px-6"
+    ></p-button>
+    <button
+      pButton
+      type="submit"
+      severity="primary"
+      styleClass="px-6"
+      [disabled]="teamForm.invalid"
+    >
+      {{ 'pokedexPage.add' | translate }}
+    </button>
+  </div>
+</form>
