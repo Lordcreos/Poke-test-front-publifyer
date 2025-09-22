@@ -5,16 +5,19 @@
       type="text"
       id="teamName"
       formControlName="teamName"
-      class="rounded-none! border-transparent! border-b-gray-200!"
+      placeholder="{{ 'teamForm.teamName' | translate }}"
+      class="rounded-xl! border-2! border-blue-200! px-4! py-3! bg-white/95! 
+             focus:border-blue-400! focus:ring-2! focus:ring-blue-200! 
+             transition-all! duration-200! shadow-sm!"
     />
-    <label class="pl-2 font-normal" for="teamName">
+    <label class="pl-2 font-semibold text-gray-700" for="teamName">
       {{ 'teamForm.teamName' | translate }}
     </label>
 
-    <label class="pl-2 font-normal mt-4" for="maxMembers">
+    <label class="pl-2 font-semibold text-gray-700 mt-4" for="maxMembers">
       {{ 'teamForm.maxMembers' | translate }}
     </label>
-    <p class="text-xs text-gray-500 pl-2 mb-1">
+    <p class="text-xs text-gray-600 pl-2 mb-1">
       {{ 'teamForm.teamMembersDescription' | translate }}
     </p>
 
@@ -23,8 +26,11 @@
       type="number"
       id="maxMembers"
       formControlName="maxMembers"
-      class="rounded border! border-gray-200 w-fit! text-right!"
+      class="rounded-xl! border-2! border-green-200! px-4! py-3! bg-white/95! 
+             w-32! text-center! focus:border-green-400! focus:ring-2! 
+             focus:ring-green-200! transition-all! duration-200! shadow-sm!"
       [min]="1"
+      [max]="12"
       [value]="6"
     />
   </div>
