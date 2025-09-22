@@ -17,19 +17,22 @@ export class AvatarComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  private menuConfig: { key: string; icon: string; command: () => void }[] = [
+  private menuConfig: { key: string; icon: string; command: () => void; adminOnly?: boolean }[] = [
     { key: 'avatar.profile', icon: 'pi pi-user', command: () => this.goToProfile() },
+    { key: 'avatar.dashboard', icon: 'pi pi-chart-line', command: () => this.goToDashboard(), adminOnly: true },
     { key: 'avatar.logout', icon: 'pi pi-sign-out', command: () => this.logout() },
   ];
 
   private labels = this.menuConfig.map((item) => signal(this.translate.instant(item.key)));
 
   items = computed<MenuItem[]>(() =>
-    this.menuConfig.map((item, index) => ({
-      label: this.labels[index](),
-      icon: item.icon,
-      command: item.command,
-    }))
+    this.menuConfig
+      .filter(item => !item.adminOnly || this.authService.isAdmin()) // Filtrar items solo para admin
+      .map((item, index) => ({
+        label: this.labels[this.menuConfig.indexOf(item)](),
+        icon: item.icon,
+        command: item.command,
+      }))
   );
 
   constructor() {
@@ -46,5 +49,9 @@ export class AvatarComponent {
 
   goToProfile() {
     this.router.navigate(['/profile']);
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 }

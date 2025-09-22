@@ -46,6 +46,7 @@
 
   "main-layout": {
     "home": "Home",
+    "dashboard": "Dashboard",
     "pokedex": "Pokedex",
     "logout": "Logout",
     "myTeam": "My Team"
@@ -59,6 +60,23 @@
     "upgradeAccount": "Register as a trainer to access all features"
   },
 
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "overview": "Overview",
+    "totalUsers": "Total Users",
+    "activeTrainers": "Active Trainers",
+    "pokemonCaught": "Pokémon Caught",
+    "teamsCreated": "Teams Created",
+    "userActivity": "User Activity",
+    "popularPokemon": "Most Popular Pokémon",
+    "systemStatus": "System Status",
+    "serverHealth": "Server Health",
+    "databaseStatus": "Database Status",
+    "apiCalls": "API Calls Today",
+    "recentActivity": "Recent Activity",
+    "viewDetails": "View Details"
+  },
+
   "profile": {
     "title": "Profile",
     "updateButton": "Update Profile",
@@ -69,6 +87,7 @@
 
   "avatar": {
     "profile": "Profile",
+    "dashboard": "Dashboard",
     "logout": "Logout"
   },
 

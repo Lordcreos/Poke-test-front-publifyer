@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { canManagePokedexGuard, canManageTeamsGuard, visitorGuard } from '@core/guards';
+import { canManagePokedexGuard, canManageTeamsGuard, visitorGuard, adminGuard } from '@core/guards';
 
 const loadHomePage = () => import('./pages/home-page/home-page.component');
+const loadDashboardPage = () => import('./pages/dashboard-page/dashboard-page.component');
 const loadPokedexPage = () => import('./pages/pokedex-page/pokedex-page.component');
 const loadMisEquiposPage = () => import('./pages/my-team-page/my-team-page.component');
 const loadTeamPage = () => import('./pages/team-page/team-page.component');
@@ -12,6 +13,11 @@ export const mainRoutes: Routes = [
     path: '',
     loadComponent: loadHomePage,
     canActivate: [visitorGuard], // Home es accesible para todos
+  },
+  {
+    path: 'dashboard',
+    loadComponent: loadDashboardPage,
+    canActivate: [adminGuard], // Solo Admin puede acceder al dashboard
   },
   {
     path: 'profile',

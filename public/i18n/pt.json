@@ -46,6 +46,7 @@
 
   "main-layout": {
     "home": "Início",
+    "dashboard": "Painel de Controle",
     "pokedex": "Pokedex",
     "logout": "Sair",
     "myTeam": "Minha Equipe"
@@ -59,6 +60,23 @@
     "upgradeAccount": "Registre-se como treinador para acessar todas as funcionalidades"
   },
 
+  "dashboard": {
+    "title": "Painel de Administração",
+    "overview": "Visão Geral",
+    "totalUsers": "Usuários Totais",
+    "activeTrainers": "Treinadores Ativos",
+    "pokemonCaught": "Pokémon Capturados",
+    "teamsCreated": "Equipas Criadas",
+    "userActivity": "Atividade dos Usuários",
+    "popularPokemon": "Pokémon Mais Populares",
+    "systemStatus": "Status do Sistema",
+    "serverHealth": "Saúde do Servidor",
+    "databaseStatus": "Status da Base de Dados",
+    "apiCalls": "Chamadas API Hoje",
+    "recentActivity": "Atividade Recente",
+    "viewDetails": "Ver Detalhes"
+  },
+
   "profile": {
     "title": "Perfil",
     "updateButton": "Atualizar Perfil",
@@ -69,6 +87,7 @@
 
   "avatar": {
     "profile": "Perfil",
+    "dashboard": "Painel de Controle",
     "logout": "Sair"
   },
 

@@ -54,9 +54,27 @@
 
   "main-layout": {
     "home": "Inicio",
+    "dashboard": "Panel de Control",
     "pokedex": "Pokedex",
     "logout": "Cerrar sesión",
     "myTeam": "Mi Equipo"
+  },
+
+  "dashboard": {
+    "title": "Panel de Administración",
+    "overview": "Resumen",
+    "totalUsers": "Usuarios Totales",
+    "activeTrainers": "Entrenadores Activos",
+    "pokemonCaught": "Pokémon Capturados",
+    "teamsCreated": "Equipos Creados",
+    "userActivity": "Actividad de Usuarios",
+    "popularPokemon": "Pokémon Más Populares",
+    "systemStatus": "Estado del Sistema",
+    "serverHealth": "Salud del Servidor",
+    "databaseStatus": "Estado de la Base de Datos",
+    "apiCalls": "Llamadas API Hoy",
+    "recentActivity": "Actividad Reciente",
+    "viewDetails": "Ver Detalles"
   },
 
   "profile": {
@@ -69,6 +87,7 @@
 
   "avatar": {
     "profile": "Perfil",
+    "dashboard": "Panel de Control",
     "logout": "Cerrar sesión"
   },
 

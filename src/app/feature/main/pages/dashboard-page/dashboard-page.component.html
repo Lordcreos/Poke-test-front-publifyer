@@ -1,0 +1,162 @@
+<div class="p-6 bg-gray-50 min-h-screen">
+  <!-- Header -->
+  <div class="mb-6">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">
+      {{ 'dashboard.title' | translate }}
+    </h1>
+    <p class="text-gray-600">
+      {{ 'dashboard.overview' | translate }}
+    </p>
+  </div>
+
+  <!-- Métricas principales -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    @for (metric of metrics(); track metric.label) {
+      <p-card class="shadow-sm border-0">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-gray-600 mb-1">
+              {{ metric.label | translate }}
+            </p>
+            <p class="text-2xl font-bold text-gray-900 mb-2">
+              {{ metric.value | number }}
+            </p>
+            <div class="flex items-center text-sm">
+              <i [class]="getTrendIcon(metric.trend)" 
+                 [class]="getTrendColor(metric.trend) + ' mr-1'"></i>
+              <span [class]="getTrendColor(metric.trend)">
+                {{ metric.trendValue }}%
+              </span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div [class]="'w-12 h-12 rounded-full flex items-center justify-center bg-' + metric.color + '-100'">
+              <i [class]="metric.icon + ' text-xl text-' + metric.color + '-600'"></i>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    }
+  </div>
+
+  <!-- Gráficos y contenido principal -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+    <!-- Gráfico de actividad de usuarios -->
+    <div class="lg:col-span-2">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="p-4 border-b">
+            <h3 class="text-lg font-semibold text-gray-900">
+              {{ 'dashboard.userActivity' | translate }}
+            </h3>
+          </div>
+        </ng-template>
+        
+        <div class="h-64">
+          <p-chart 
+            type="line" 
+            [data]="userActivityData()" 
+            [options]="userActivityOptions()"
+            class="w-full h-full">
+          </p-chart>
+        </div>
+      </p-card>
+    </div>
+
+    <!-- Estado del sistema -->
+    <div class="lg:col-span-1">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="p-4 border-b">
+            <h3 class="text-lg font-semibold text-gray-900">
+              {{ 'dashboard.systemStatus' | translate }}
+            </h3>
+          </div>
+        </ng-template>
+        
+        <div class="space-y-4">
+          @for (status of systemStatus(); track status.name) {
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div>
+                <p class="font-medium text-gray-900">
+                  {{ status.name | translate }}
+                </p>
+                <p class="text-sm text-gray-600">{{ status.uptime }}</p>
+              </div>
+              <p-tag 
+                [value]="status.status" 
+                [severity]="getStatusSeverity(status.status)">
+              </p-tag>
+            </div>
+          }
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <!-- Sección inferior -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Pokémon más populares -->
+    <p-card>
+      <ng-template pTemplate="header">
+        <div class="p-4 border-b">
+          <h3 class="text-lg font-semibold text-gray-900">
+            {{ 'dashboard.popularPokemon' | translate }}
+          </h3>
+        </div>
+      </ng-template>
+      
+      <div class="h-64">
+        <p-chart 
+          type="doughnut" 
+          [data]="popularPokemonData()" 
+          [options]="popularPokemonOptions()"
+          class="w-full h-full">
+        </p-chart>
+      </div>
+    </p-card>
+
+    <!-- Actividad reciente -->
+    <p-card>
+      <ng-template pTemplate="header">
+        <div class="p-4 border-b flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-900">
+            {{ 'dashboard.recentActivity' | translate }}
+          </h3>
+          <p-button 
+            [label]="'dashboard.viewDetails' | translate" 
+            size="small" 
+            severity="secondary">
+          </p-button>
+        </div>
+      </ng-template>
+      
+      <div class="space-y-3">
+        @for (activity of recentActivity(); track $index) {
+          <div class="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+            <div class="flex-shrink-0">
+              <p-badge 
+                [severity]="getActivityColor(activity.type)"
+                class="w-8 h-8 flex items-center justify-center">
+                <i [class]="getActivityIcon(activity.type)"></i>
+              </p-badge>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-medium text-gray-900 truncate">
+                {{ activity.user }}
+              </p>
+              <p class="text-sm text-gray-600 truncate">
+                {{ activity.action }}
+              </p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-gray-500">
+                {{ activity.time }}
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+    </p-card>
+  </div>
+</div>
