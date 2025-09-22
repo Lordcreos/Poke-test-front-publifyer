@@ -1,3 +1,9 @@
+export enum UserRole {
+  ADMIN = 'admin',
+  TRAINER = 'trainer',
+  VISITOR = 'visitor'
+}
+
 interface UserBase {
   name: string;
   lastName: string;
@@ -5,6 +11,7 @@ interface UserBase {
   phone?: string;
   city?: string;
   hasReference: boolean;
+  role: UserRole;
 }
 
 export interface NewUser extends UserBase {

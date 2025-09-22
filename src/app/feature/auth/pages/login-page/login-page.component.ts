@@ -28,6 +28,44 @@ import { ToastModule } from 'primeng/toast';
       :host {
         @apply flex w-full justify-end;
       }
+      
+      .demo-accounts-enter {
+        animation: slideDown 0.3s ease-out;
+      }
+      
+      .demo-accounts-exit {
+        animation: slideUp 0.3s ease-in;
+      }
+      
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+          max-height: 0;
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+          max-height: 500px;
+        }
+      }
+      
+      @keyframes slideUp {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+          max-height: 500px;
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-10px);
+          max-height: 0;
+        }
+      }
+      
+      .demo-card:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,6 +79,10 @@ export default class LoginPageComponent {
     password: new FormControl('', [Validators.required]),
     rememberMe: new FormControl(false),
   });
+
+  // Obtener cuentas de prueba para mostrar
+  testAccounts = this.authService.getTestAccounts();
+  showTestAccounts = false;
 
   onLogIn(): void {
     if (isInvalidForm(this.loginForm)) return;
@@ -57,5 +99,24 @@ export default class LoginPageComponent {
 
   isInvalid(controlName: string): boolean {
     return isInvalidInput(this.loginForm, controlName);
+  }
+
+  toggleTestAccounts(): void {
+    this.showTestAccounts = !this.showTestAccounts;
+  }
+
+  fillTestAccount(email: string, password: string): void {
+    this.loginForm.patchValue({
+      email,
+      password
+    });
+    
+    // Agregar un pequeño feedback visual
+    this.toastService.showSuccess('Credenciales cargadas correctamente ✨');
+    
+    // Opcional: cerrar el panel después de seleccionar
+    setTimeout(() => {
+      this.showTestAccounts = false;
+    }, 1500);
   }
 }

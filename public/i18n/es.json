@@ -2,6 +2,14 @@
   "auth-layout": {
     "welcome": "Bienvenido a"
   },
+  "toast": {
+    "accessDenied": "Acceso Denegado",
+    "accessDeniedMessage": "No tienes permisos para acceder a esta función",
+    "insufficientPermissions": "Permisos Insuficientes",
+    "visitorLimitation": "Los visitantes no pueden acceder a esta funcionalidad",
+    "loginRequired": "Inicio de sesión requerido",
+    "upgradeAccount": "Regístrate como entrenador para acceder a todas las funciones"
+  },
   "login": {
     "title": "Iniciar sesión",
     "email": "Correo",
@@ -48,7 +56,7 @@
     "home": "Inicio",
     "pokedex": "Pokedex",
     "logout": "Cerrar sesión",
-    "my-teams": "Mis equipos"
+    "myTeam": "Mi Equipo"
   },
 
   "avatar": {

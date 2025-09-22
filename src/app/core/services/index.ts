@@ -2,6 +2,7 @@ export * from './api.service';
 export * from './auth.service';
 export * from './cities.service';
 export * from './language.service';
+export * from './mock-data.service';
 export * from './poke-filters-api.service';
 export * from './poke-filters-data.service';
 export * from './pokedex.service';

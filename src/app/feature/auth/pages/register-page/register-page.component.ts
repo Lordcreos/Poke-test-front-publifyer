@@ -7,7 +7,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { NewUser } from '@core/models';
+import { NewUser, UserRole } from '@core/models';
 import { AuthService, ToastService, CitiesService } from '@core/services';
 
 import { TranslateModule } from '@ngx-translate/core';
@@ -85,6 +85,7 @@ export default class RegisterPageComponent {
       city: this.registerForm.value.city! || null,
       hasReference: this.registerForm.value.hasReference! || false,
       password: this.registerForm.value.password!,
+      role: UserRole.TRAINER, // Usuarios registrados son trainers por defecto
     };
 
     console.log(newUser);

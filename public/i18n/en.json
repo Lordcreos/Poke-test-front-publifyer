@@ -48,7 +48,15 @@
     "home": "Home",
     "pokedex": "Pokedex",
     "logout": "Logout",
-    "my-teams": "My Teams"
+    "myTeam": "My Team"
+  },
+  "toast": {
+    "accessDenied": "Access Denied",
+    "accessDeniedMessage": "You don't have permission to access this feature",
+    "insufficientPermissions": "Insufficient Permissions",
+    "visitorLimitation": "Visitors cannot access this functionality",
+    "loginRequired": "Login Required",
+    "upgradeAccount": "Register as a trainer to access all features"
   },
 
   "avatar": {

@@ -48,7 +48,15 @@
     "home": "Início",
     "pokedex": "Pokedex",
     "logout": "Sair",
-    "my-teams": "Meus Times"
+    "myTeam": "Minha Equipe"
+  },
+  "toast": {
+    "accessDenied": "Acesso Negado",
+    "accessDeniedMessage": "Você não tem permissão para acessar esta funcionalidade",
+    "insufficientPermissions": "Permissões Insuficientes",
+    "visitorLimitation": "Visitantes não podem acessar esta funcionalidade",
+    "loginRequired": "Login Necessário",
+    "upgradeAccount": "Registre-se como treinador para acessar todas as funcionalidades"
   },
 
   "avatar": {

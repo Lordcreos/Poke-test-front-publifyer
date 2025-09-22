@@ -76,4 +76,85 @@
       {{ 'login.signUp' | translate }}
     </a>
   </div>
+
+  <!-- Sección de cuentas de prueba -->
+  <div class="mt-6 border-t border-white/20 pt-4">
+    <button 
+      type="button"
+      (click)="toggleTestAccounts()"
+      class="w-full relative bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 
+             text-white font-semibold py-3 px-4 rounded-xl shadow-lg hover:shadow-xl 
+             transform hover:scale-105 transition-all duration-200 ease-in-out
+             border border-white/20 backdrop-blur-sm"
+    >
+      <div class="flex items-center justify-center gap-2">
+        <i class="pi pi-key text-sm"></i>
+        <span class="text-sm font-bold">
+          {{ showTestAccounts ? '🔒 Ocultar Cuentas Demo' : '🔑 Ver Cuentas Demo' }}
+        </span>
+        <i class="pi text-xs transition-transform duration-200" 
+           [class]="showTestAccounts ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
+      </div>
+      
+      <!-- Efecto de brillo -->
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
+                  -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] 
+                  transition-transform duration-1000 ease-out opacity-0 hover:opacity-100"></div>
+    </button>
+    
+    @if (showTestAccounts) {
+      <div class="demo-accounts-enter bg-gradient-to-br from-white/15 to-white/5 rounded-2xl p-4 mt-3 
+                  border border-white/20 backdrop-blur-sm shadow-xl">
+        <div class="text-center mb-4">
+          <h3 class="text-sm font-bold text-white mb-1">🎮 Cuentas Demo Disponibles</h3>
+          <p class="text-xs text-white/70">Haz clic en cualquier cuenta para probarla</p>
+        </div>
+        
+        <div class="space-y-3">
+          @for (account of testAccounts; track account.email) {
+            <div 
+              (click)="fillTestAccount(account.email, account.password)"
+              class="demo-card group cursor-pointer bg-gradient-to-r from-white/10 to-white/5 
+                     hover:from-white/20 hover:to-white/15 rounded-xl p-3 relative overflow-hidden
+                     transform hover:scale-[1.02] transition-all duration-200 ease-out
+                     border border-white/10 hover:border-white/30 shadow-lg hover:shadow-xl"
+            >
+
+              
+              <div class="flex justify-between items-start">
+                <div class="flex-1 pr-2">
+                  <div class="flex items-center gap-2 mb-1">
+                    <i class="pi pi-user text-xs text-white/80"></i>
+                    <p class="text-sm font-bold text-white group-hover:text-white">{{ account.email }}</p>
+                  </div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <i class="pi pi-lock text-xs text-white/60"></i>
+                    <p class="text-xs text-white/70 font-mono bg-black/20 px-2 py-1 rounded">{{ account.password }}</p>
+                  </div>
+                </div>
+                <span 
+                  class="text-xs px-3 py-1 rounded-full font-bold shadow-sm"
+                  [class]="account.role === 'admin' ? 'bg-red-500/30 text-red-200 border border-red-400/30' : 
+                           account.role === 'trainer' ? 'bg-blue-500/30 text-blue-200 border border-blue-400/30' : 
+                           'bg-gray-500/30 text-gray-200 border border-gray-400/30'"
+                >
+                  {{ account.role.toUpperCase() }}
+                </span>
+              </div>
+              <p class="text-xs text-white/60 mt-2 group-hover:text-white/80 transition-colors">
+                <i class="pi pi-info-circle mr-1"></i>{{ account.description }}
+              </p>
+              
+              <!-- Indicador de click -->
+              <div class="flex items-center justify-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span class="text-xs text-emerald-300 font-medium">
+                  <i class="pi pi-hand-pointer mr-1"></i>Click para auto-llenar
+                </span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
 </div>
